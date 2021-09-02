@@ -1,0 +1,40 @@
+  [
+  {
+        "quistion": "what is 2+2?",
+        "answers":[
+            {"text":"22", "correct":false},
+            {"text":"4", "correct":true},
+            {"text":"44", "correct":false},
+            {"text":"2", "correct":false}
+        ]
+    },
+    {
+        "quistion": "what is 2*4?",
+        "answers":[
+            {"text":"8", "correct":true},
+            {"text":"4", "correct":false}
+
+        ]
+    },
+    {
+        "quistion":"Inside which HTML element do we put the JavaScript?",
+        "answers":[
+        {"text":"<javascript>", "correct":false},
+        {"text":"<script>", "correct":true},
+        {"text":"<js>", "correct":false}
+        ]
+    },
+    {
+        "quistion":"What is the correct JavaScript syntax to change the content of the HTML element below?&ensp<p id=demo'>This is a demonstration.</p>",
+        "answers":[
+        {"text":"<javascript>", "correct":false},
+        {"text":"<script>", "correct":true},
+        {"text":"<js>", "correct":false},
+        {"text":"<scripting>", "correct":false},
+        {"text":"44", "correct":false},
+        {"text":"2", "correct":false}
+        ]
+    }  
+
+
+]
