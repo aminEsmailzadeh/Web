@@ -17,7 +17,7 @@
 //     return this.name;
 // }
 // }
-// let T= new task('amin','111');
+// let T= new task('samuel','111');
 // console.dir(T);
 
 
@@ -41,32 +41,6 @@
 // console.log("after");
 //***************************************************************************************** */
 
-// var t = new Promise(function(resolve,reject){
-//     console.log('start promise');
-   
-
-//     // resolve('enter to Resolve promise');
-
-
-   
-//         reject('rejected by ME');
-  
-
-//     setTimeout(function(){
-//         console.log('Done');
-//     },2000);
-    
-// });
-
-// t.then(function(data){
-//     console.log(data);
-// });
-
-// t.catch(function(err)
-// {
-//     console.log(err);
-// }
-// );
 /********************************************************************************************************/
 
 
@@ -79,8 +53,8 @@
 //   }
   
 //   let users=[
-//       new User('amin',true),
-//       new User('parvin',false)
+//       new User('samuel',true),
+//       new User('samantha',false)
 //     ];
   
 
@@ -100,7 +74,7 @@
 // /********************************************************************************************************/
 
 // Array
-// let collection=['amin',5,1,2,'parvin','abtin'];
+// let collection=['samuel',5,1,2,'samantha','anna'];
 // let collection2=[1,2,3,4,5,6];
 
 // collection = collection.concat(collection2);
@@ -133,17 +107,19 @@ const threshhold= (arr) => arr<40;
 array.every(threshhold);
 console.log(array);
 
+
+
 let found=array.find(el=>el>10);
 let foundFiltter2 = array.filter((arr)=>arr > 5);
 
-const words= ['amin','abtin','parvin'];
+const words= ['samuel','anna','samantha'];
 let result =words.filter((wrd)=>wrd.length > 5);
 
 console.log(result);
 
 
 
-let elements=['amin','parvin','abtin'];
+let elements=['samuel','samantha','anna'];
 console.log(elements.join(' '));
 
 const keysList=elements.keys();
@@ -216,6 +192,60 @@ for(const [index,item] of Array3.entries())
      console.log(item*4,index);
 }
 
+let reduce = [1,2,3,4,5,6,7,8,9,10].reduce((accumulator,current)=>
+{
+return accumulator+current;
+});
+
+console.log('reducer on array',reduce);
+
+
+
+const button = document.getElementById('btnClick');
+
+button.addEventListener('click',()=>{
+
+      let clicked = 'Clicked';
+      let clickOnMe = 'Click Me';
+      
+     if(button.innerText.includes(clicked) )
+     { 
+          button.innerText = clickOnMe ;
+     }
+     else{
+          button.innerText=clicked ;
+      } 
+     
+});
+//********************** Promise ****************************************************** */
+
+
+var t = new Promise(function(resolve,reject){
+    console.log('start promise');
+   
+
+    // resolve('enter to Resolve promise');
+
+
+   
+        reject('rejected by ME');
+  
+
+    setTimeout(function(){
+        console.log('Done');
+    },2000);
+    
+});
+
+t.then(function(data){
+    console.log(data);
+});
+
+t.catch(function(err)
+{
+    console.log(err);
+}
+);
 //***************************************************************************************************** */
 // const obj= {one:1,two:2,three:3,four:4,five:5};
 // const Obj2Array = Object.entries(obj);
@@ -307,13 +337,13 @@ for(const [index,item] of Array3.entries())
 
 
 // const newobject ={
-//     name: 'amin',
-//       username:'aminUser',
+//     name: 'samuel',
+//       username:'samuelUser',
 //         password:'1234',
 //           getPass: function () {return 'name';}
     
 //   }
-//   newobject.name ='AMIN';
+//   newobject.name ='samuel';
 //   console.log(newobject.getPass());
 //   console.log(newobject.name);
 
@@ -340,7 +370,7 @@ for(const [index,item] of Array3.entries())
 // }
 
 // }
-// let T= new task('amin','111');
+// let T= new task('samuel','111');
 // console.dir(T);
   
 //******************************************************************************************************* */
@@ -349,20 +379,20 @@ for(const [index,item] of Array3.entries())
 
 // (function(name){
 //     console.info('hard work '+ name);
-//     })('amin');
+//     })('samuel');
     
     
-//     let warnigMsg = function(name='amin')
+//     let warnigMsg = function(name='samuel')
 //     {
 //       console.warn('hard work ' +name);
 //     }
     
-//     warnigMsg('amin');
+//     warnigMsg('samuel');
     
     
     
 //     let errMsg = (name) =>  console.error('hard work '+name);
-//     errMsg('amin');
+//     errMsg('samuel');
 
 
 
