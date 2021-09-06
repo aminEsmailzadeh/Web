@@ -1,3 +1,6 @@
+
+
+
 const startButton = document.getElementById("start-btn");
 const nextButton  = document.getElementById("next-btn");
 const quistionContiner = document.getElementById("quistion-container");
@@ -14,27 +17,24 @@ const mousePosition= (event)=>{
 window.addEventListener("mousemove",mousePosition);
 
 
-class  classAns{
-        constructor(text,correct)
-        {
-            this.text= text;
-            this.correct= correct;
-        }
+class classAns {
+  constructor(text, correct) {
+      this.text = text;
+      this.correct = correct;
+  }
 }
 
-class classQuise
-{
-    constructor(quistion,...ans)
-    {
-        this.quistion=quistion;
-        this.ans = ans;
-    }
+class classQuise {
+  constructor(quistion, ...ans) {
+      this.quistion = quistion;
+      this.ans = ans;
+  }
 
-    *getAnswers() {
-        for(const answer of this.ans){
-        yield answer;
-        }
-    }
+  *getAnswers() {
+      for (const answer of this.ans) {
+          yield answer;
+      }
+  }
 }
 
 

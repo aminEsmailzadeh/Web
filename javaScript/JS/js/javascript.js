@@ -1,3 +1,16 @@
+
+const btnCounter= document.getElementById('btnCcounter');
+const header= document.querySelector('h1');
+let counter = 0;
+
+btnCounter.addEventListener('click',()=>{
+    counter++;
+    header.innerHTML = counter;
+    if(counter%10===0)
+    alert(`Counter is now ${counter}`);
+});
+
+//******************************************************************************************************************** */
 // class task{
 
 //     constructor(name,user)
@@ -21,7 +34,7 @@
 // console.dir(T);
 
 
-//***************************************************************************************** */
+//******************************************************************************************************************************** */
 // function log(startegy){
 // startegy.handel();
 // }
@@ -73,6 +86,17 @@
 // //   );
 // /********************************************************************************************************/
 
+
+const person={};
+person['name'] ='maria';
+person['id']='123';
+
+console.log('person init',person);
+
+const arrayT = [];
+arrayT.push('maria from array');
+console.log('array',arrayT[0]);
+
 // Array
 // let collection=['samuel',5,1,2,'samantha','anna'];
 // let collection2=[1,2,3,4,5,6];
@@ -119,7 +143,9 @@ console.log(result);
 
 
 
-let elements=['samuel','samantha','anna'];
+let elements=['david','kay','gaby'];
+
+
 console.log(elements.join(' '));
 
 const keysList=elements.keys();
@@ -129,6 +155,19 @@ const ValuesList=elements.values();
 for(const values of ValuesList){
     console.log(values);
 }
+
+const concatArray = [...elements,...words];
+console.log('concatArray',concatArray);
+
+const nA ='marian';
+const nameArray = [...nA];
+nameArray.forEach((letter)=>
+{
+    console.log('marian letter ',letter);
+})
+
+
+
 
 
 const NumArray=[1,2,3,4,5,6,7,8,9];
@@ -205,16 +244,20 @@ const button = document.getElementById('btnClick');
 
 button.addEventListener('click',()=>{
 
-      let clicked = 'Clicked';
-      let clickOnMe = 'Click Me';
+      const clicked = 'Clicked';
+      const clickOnMe = 'Click Me';
+      let buttonText = undefined;
       
      if(button.innerText.includes(clicked) )
      { 
-          button.innerText = clickOnMe ;
+        buttonText = clickOnMe ;
      }
      else{
-          button.innerText=clicked ;
+        buttonText = clicked;
       } 
+
+      button.innerText=buttonText ;
+      alert(buttonText);
      
 });
 //********************** Promise ****************************************************** */
@@ -224,11 +267,9 @@ var t = new Promise(function(resolve,reject){
     console.log('start promise');
    
 
-    // resolve('enter to Resolve promise');
+    resolve('enter to Resolve promise'); 
 
-
-   
-        reject('rejected by ME');
+    reject('rejected by ME');
   
 
     setTimeout(function(){
@@ -246,6 +287,33 @@ t.catch(function(err)
     console.log(err);
 }
 );
+//**********************************Call Back*********************************************************************************** */
+
+
+let callBack = (n)=>
+{
+    return n*2;
+}
+
+let map = [1,2,3,4,5,6].map(callBack);
+
+console.log('map * 2 = ', map);
+
+
+
+
+
+let callbackExample =  (name , callbackFunc)=>
+{
+console.log(callbackFunc(name));
+}
+
+let callBackF = (name)=>
+{
+    return 'welcome '+name;
+}
+
+callbackExample('jacoob',callBackF);
 //***************************************************************************************************** */
 // const obj= {one:1,two:2,three:3,four:4,five:5};
 // const Obj2Array = Object.entries(obj);
@@ -326,9 +394,11 @@ t.catch(function(err)
 // console.log(
 // [...set].filter(tag=> tag.length===3));
 
-//******************************************************************************************************* */
-// import {items} from "./javascriptTest.js"
-// console.log(items);
+//*****************************************Export and import ************************************************************** */
+import task,{itemsA} from "./javascriptTest.js"
+console.log('exported list',itemsA);
+let T= new task('Alex','111');
+console.dir('exported class',T);
 
 //******************************************************************************************************* */
 
@@ -397,6 +467,34 @@ t.catch(function(err)
 
 
 //******************************************************************************************************* */
+let power =[1,2,3,4,5].map((numer,index) =>
+{
+return Math.pow(numer,index);
+});
 
+power.forEach((item,index) => { console.log(item);});
+
+//************************************Spread******************************************************************* */
+
+
+const addnumber= (n1,n2,n3) =>
+{
+    return n1+n2+n3;
+}
+console.log('speard add ',addnumber(...[1,2,3]));
+
+const speardAddnumber= (...n) =>
+{
+    let retVal = 0;
+    for (const val of n) {
+        retVal+=val;
+    }
+    return  retVal;
+}
+console.log('speardAddnumber ',speardAddnumber(...[1,2,3,8]));
+
+const mileToKm= (mile) => mile*1.60934;
+
+console.log('5 Mile to KM',mileToKm(5));
 
 //******************************************************************************************************* */
