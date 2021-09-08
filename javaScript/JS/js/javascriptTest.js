@@ -10,6 +10,15 @@ export default class task{
     }
 
 }
-
+export const personAssets={
+    name:'alex',
+    cars:['ferrari','lambo'],
+    toString: function(){
+        const that = this;
+        this.cars.forEach(car => {
+            console.log(`${that.name} has ${car} `);
+        });
+   }
+}
 
 

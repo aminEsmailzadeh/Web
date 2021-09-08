@@ -273,12 +273,14 @@ var t = new Promise(function(resolve,reject){
   
 
     setTimeout(function(){
-        console.log('Done');
+        console.log('-------------------------------------');
+        console.log('Done Promise Method');
     },2000);
     
 });
 
 t.then(function(data){
+    console.log('-----------------------------------');
     console.log(data);
 });
 
@@ -346,7 +348,7 @@ callbackExample('jacoob',callBackF);
 //     // console.log(`${obj[property]}`);
 // }
 
-//******************************************************************************************************* */
+//*************************************************Genrators ****************************************************** */
 // function* numbers()
 // {
 //     console.log('Begin');
@@ -395,10 +397,12 @@ callbackExample('jacoob',callBackF);
 // [...set].filter(tag=> tag.length===3));
 
 //*****************************************Export and import ************************************************************** */
-import task,{itemsA} from "./javascriptTest.js"
+import task,{itemsA,personAssets as pAssets } from "./javascriptTest.js"
 console.log('exported list',itemsA);
 let T= new task('Alex','111');
 console.dir('exported class',T);
+
+pAssets.toString();
 
 //******************************************************************************************************* */
 
@@ -416,6 +420,7 @@ console.dir('exported class',T);
 //   newobject.name ='samuel';
 //   console.log(newobject.getPass());
 //   console.log(newobject.name);
+
 
 
 // class task{
@@ -497,4 +502,324 @@ const mileToKm= (mile) => mile*1.60934;
 
 console.log('5 Mile to KM',mileToKm(5));
 
-//******************************************************************************************************* */
+//*************************************Enhance Object property****************************************************************** */
+const propName ="PRICE";
+
+const calculator= (name,price) =>
+{
+return {
+    name:name,
+
+toString()
+{
+    return {name:name}
+},
+    [propName.toLowerCase()] : price
+}
+}
+const cal=calculator('Casio',22.8);
+console.info('Object property  ',cal.name,cal.price);
+
+
+
+//*****************************************************Array Descurturing******************************************************************************************* */
+
+const nameArr = ['Anna','Mariam','Joe','Matt','Mark'];
+const [anna, ,Joe,...RestOfnames] =nameArr;
+
+console.log(`${anna},${Joe}`,RestOfnames);
+console.log('RestOfnames lenght ',RestOfnames.length);
+
+
+
+//***********************************************************************Object Descurturing******************************************************************************************* */
+const getUsers= () =>
+{
+return {
+    name:'joe',
+    address:{
+        country:'UK',
+        fullAddress:
+        {
+            HomeNumer: 2,
+            street:'LA ST'
+        }
+        
+    },
+    age:22
+}
+}
+
+const user = getUsers();
+
+
+// const name = user.name;
+// const country= user.address.country;
+// const age = user.age;
+// const street = user.address.fullAddress.street;
+// console.info('Object Descurturing  ',name,country,age,street);
+
+const {name:theName,age:theAge,address:{country:theCountry}}=user;
+const {address:{fullAddress:{street:street}}}=user;
+console.info('Object Descurturing  ',theName,theCountry,theAge,street);
+//*****************************************************iteration and destructuring*********************************************************************** */
+
+const people = [
+    {
+      name: 'Mike Smith',
+      family: {
+        mother: 'Jane Smith',
+        father: 'Harry Smith',
+        sister: 'Samantha Smith'
+      },
+      age: 35
+    },
+    {
+      name: 'Tom Jones',
+      family: {
+        mother: 'Norah Jones',
+        father: 'Richard Jones',
+        brother: 'Howard Jones'
+      },
+      age: 25
+    }
+  ];
+  
+  for (const {name: n, family: {father: f}} of people) {
+    console.log('Name: ' + n + ', Father: ' + f);
+  }
+  
+
+//********************************************************** Resize *****************************************************************************************
+
+(function(){
+	var showSize = document.createElement('div');
+    const sizeBox =document.getElementById('sizeBox');
+	showSize.setAttribute('style', 'display: none;width: 130px;line-height: 25px; height: 25px; background-color: rgba(240,240,240,.8); text-align: center; position:fixed; top: 0; right: 0; color: #454545');
+	document.body.appendChild(showSize);
+
+	var timeout;
+	window.addEventListener('resize', function(e){
+		var width = document.documentElement.offsetWidth,
+			height = window.innerHeight;
+			
+            sizeBox.innerHTML = 'witdh: '+width+' px    '+ '     height:  ' +height +'  px';
+            
+		showSize.textContent = width+'px x '+ height +'px';
+		showSize.style.display = 'block';
+		if(timeout !== undefined)
+        {
+            clearTimeout(timeout);
+        }
+
+		timeout = setTimeout(function(){
+			showSize.style.display = 'none';
+		}, 2000);
+	});
+})();
+
+//******************************************************************Class and inheritance**********************************************************************
+class Animal{
+    constructor(name,age)
+    {
+        console.log(`${name} is animal and was created`);
+        this.name =name;
+        this.age = age;
+    }
+
+    static whatIsCallsName()
+    {
+        console.log('this class name is Animal by static Method');
+    }
+    eat()
+    {
+        console.log(`${this.name} is eating`);
+    }
+    sleep()
+    {
+            console.log(`${this.name} is sleeping`);   
+    }
+    wakeUp()
+    {       
+            console.log(`${this.name} is wakeing up`);
+    }
+    Name()
+    {
+        return this.name;
+    }
+}
+console.log('---------------------------------------');
+Animal.whatIsCallsName();
+console.log('---------------------------------------');
+const matt = new Animal('matt',2);
+matt.eat();
+matt.sleep();
+matt.wakeUp();
+console.log('---------------------------------------');
+class dog extends Animal
+{
+    constructor(name,age,breed)
+    {
+        super(name,age);
+        this.breed = breed;
+    }
+    getBreed()
+    {
+        console.log(`breed : ${this.breed}`);
+    }
+    getName()
+    {
+        console.log(`name : ${super.Name()}`);
+    }
+}
+
+let maya =new dog('maya',4,'hasski');
+maya.getBreed();
+maya.getName();
+maya.eat();
+maya.sleep();
+maya.wakeUp();
+maya.sleep();
+//**********************************************************Promise********************************************************************************
+
+// const pr = new Promise((resolve,reject)=>{
+
+// setTimeout(() => {
+//     console.log(`%c Promise resolve`, 'background: green; color: white; display: block;');
+//     resolve('enter to resolve state');
+// }, 2000);
+
+// setTimeout(() => {
+//     console.log(`%c Promise reject`, 'background: red; color: white; display: block;');
+//     reject('enter to reject state');
+// }, 5000);
+
+
+// });
+
+
+// pr.then(Response=>{
+//     console.log(Response);
+// }).catch(error=>{
+// console.log(error);
+// });
+
+//*********************************************Promise All***********************************************************************************
+// const namePromise = new Promise(function(resolve,reject)
+// {
+
+//      resolve(['anna','joe','maya','mike']);
+   
+    
+//     setTimeout(() => {
+//         console.log(`%c Promise reject`, 'background: red; color: white; display: block;');
+//         reject('No Data Back');
+//     }, 5000);
+    
+    
+//     });
+    
+//     const surnamePromise = new Promise(function(resolve,reject)
+// {
+
+    
+//      resolve(['williams','bravo','janson','hafkin']);
+    
+    
+//     setTimeout(() => {
+//         console.log(`%c Promise reject`, 'background: red; color: white; display: block;');
+//         reject('No Data Back');
+//     }, 5000);
+    
+    
+//     });
+    
+//     Promise.all([namePromise,surnamePromise]).then(data=>
+//     {
+//         const [names,surnames] = data;
+//         for (let index = 0; index < names.length; index++) {
+//             const name = names[index];
+//             const surname = surnames[index];
+//             console.log(`${name} ${surname}`);
+//         }
+   
+//     }).catch(error=>{
+//         console.log(error);
+//     });
+    //****************************************************************** promise ***************************************************************** */
+
+    // const getRandomusers= n=>{
+    //     const fetchRandomUsers = fetch(`https://randomuser.me/api/?results=${n}`);
+    //     fetchRandomUsers.then(data=>{
+    //         data.json().then(randomUsers => {
+    //                 console.log(JSON.stringify(randomUsers));
+    //                 randomUsers.results.forEach( user=>
+    //                     {
+    //                         console.log(`${user.name.first} ${user.name.last}`)
+    //                     });
+    //         });
+    //     });
+    // }
+
+    // getRandomusers(100);
+
+    //******************************************************* CoRoutins   GENRATORS  promise*********************************************************************
+// import {coroutin as co} from 'bluebird';
+// const getRandomusers = co (function* (n){
+//     const fetchRandomUsers =  yield fetch(`https://randomuser.me/api/?results=${n}`);
+//     const data  = yield fetchRandomUsers.json;
+//     return data;
+// });
+
+// getRandomusers(10).then(randomUsers=>
+//     {
+//         randomUsers.results.forEach( user=>{
+//             const {name:theName,age:theAge,address:{country:theCountry}}=user;
+//             const {address:{fullAddress:{street:street}}}=user;
+//             console.info('Object Descurturing  ',theName,theCountry,theAge,street);
+//         });
+        
+    // });
+//***********************************************ASYNc AWait ***********************************************************************/
+
+const getRandomusers = async (n)=>{
+    try{
+    const fetchRandomUsers =  await fetch(`https://randomuser.me/api/?results=${n}`);
+    const data  = await fetchRandomUsers.json();
+    data.results.forEach( user=>{
+        const {name:{first:thefirstName,last:thelasttName},location:{city:theCity},email:theemail,picture:{large:thePic}}=user;
+        console.info('Async await  ',thefirstName,thelasttName,theCity,theemail,thePic);
+    });
+    return data;
+}
+catch(error)
+{
+    console.error(error);
+}
+};
+
+getRandomusers(100);
+   
+//******************************************************* GENRATORS **************************************************************************** */
+const getNumbers = function* (numbers){
+    for (let index = 0; index < numbers.length; index++) {
+        yield numbers[index];
+        
+    }
+}
+
+const Numbers = getNumbers([1,2,3,4,5]);
+const interval = setInterval(() => {
+    const next = Numbers.next();
+    if(next.done)
+    {
+        console.log('this generator is done');
+        clearInterval(interval);
+    }else
+    {
+        const number= next.value;
+        console.log(number);
+    }
+
+}, 1000);
+
